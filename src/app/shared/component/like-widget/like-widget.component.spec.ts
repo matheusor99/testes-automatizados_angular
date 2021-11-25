@@ -23,19 +23,19 @@ describe(LikeWidgetComponent.name, () => {
         expect(component).toBeTruthy();
     });
 
-    it('Shold auto generate ID when id input property is missing', () => {
+    it('Should auto-generate ID during ngOnInit when (@Input id) is not assigned', () => {
         fixture.detectChanges();
         expect(component.id).toBeTruthy();
     })
 
-    it('Shold NOT generate ID when id input property is present', () => {
+    it('Should NOT auto-generate ID during ngOnInit when (@Input id) is assigned', () => {
         const someId = 'someId';
         component.id = someId;
         fixture.detectChanges();
         expect(component.id).toBe('someId');
     })
 
-    it(`#${LikeWidgetComponent.prototype.like.name} shold trigger emission when called`, () => {
+    it(`#${LikeWidgetComponent.prototype.like.name} shold trigger (@Output liked) when called`, () => {
         spyOn(component.liked, 'emit')
         fixture.detectChanges();
         component.like();
